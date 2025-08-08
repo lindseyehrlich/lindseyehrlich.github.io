@@ -173,6 +173,31 @@
     color: black;
   }
 
+  /* Skills grid layout */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .skills-column h4 {
+    margin-bottom: 0.5rem;
+    color: white; /* Matches your white-on-black theme */
+  }
+
+  .skills-column ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--muted); /* Slightly muted text for bullets */
+  }
+
+  .skills-column li {
+    margin-bottom: 0.3rem;
+  }
+
   /* Mobile: stack vertically */
   @media (max-width: 600px) {
     .profile-hero-container {
@@ -296,6 +321,50 @@
         <h3 id="about-heading">About</h3>
         <p>From building robots in middle school to researching and developing AI now, one thing continues to drive me: a passion for innovation.</p>
         <p style="color:var(--muted)">Based in Atlanta, GA. Currently seeking AI-related opportunities.</p>
+      </section>
+
+      <section id="skills">
+        <h3 style="text-align:center;">Technical Skills</h3>
+        <div class="skills-grid">
+          <div class="skills-column">
+            <h4>Programming Languages</h4>
+            <ul>
+              <li>Python</li>
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>C++</li>
+              <li>HTML</li>
+            </ul>
+      
+            <h4>AI</h4>
+            <ul>
+              <li>PyTorch</li>
+              <li>TensorFlow</li>
+              <li>Scikit-learn</li>
+              <li>Large Language Models (LLMs)</li>
+              <li>Natural Language Processing (NLP)</li>
+              <li>Computer Vision</li>
+            </ul>
+          </div>
+      
+          <div class="skills-column">
+            <h4>Software Development</h4>
+            <ul>
+              <li>Agile</li>
+              <li>Git</li>
+            </ul>
+            
+            <h4>Tools</h4>
+            <ul>
+              <li>VSCode</li>
+              <li>Android Studio</li>
+              <li>Jupyter Notebook</li>
+              <li>IntelliJ</li>
+              <li>Eclipse</li>
+              <li>Cursor</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section id="work" aria-labelledby="work-heading">
