@@ -1,4 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Personal Website</title>
+
+  <!-- Optional: use a clean web font; remove the link if you prefer system fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Color / base --- */
+    :root{
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.68);
+      --accent: rgba(255,255,255,0.12);
+      --max-width: 1000px;
+    }
+
+    /* Reset & basic layout */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body{
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      line-height: 1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      padding: 0.5rem 0.75rem;
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      z-index: 100;
+    }
+
+    header {
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .brand {
+      display:flex;
+      gap: .75rem;
+      align-items:center;
+    }
+    .logo {
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      background: linear-gradient(135deg,#222,#111);
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      color:var(--text);
+      font-size:1.1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    h1.site-title {
+      font-size:1.25rem;
+      letter-spacing: -0.01em;
+      font-weight:600;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 1rem;
+      font-size: 0.95rem;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--text);
+    }
+
+    main {
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding: 2.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      line-height: 1.05;
+      margin-bottom: 0.25rem;
+    }
+    .hero p.lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 65ch;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--accent);
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: .65rem;
+      font-weight:600;
+    }
+    p {
+      color: var(--muted);
+      margin-bottom: .75rem;
+    }
+
+    /* Grid for cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: .5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.02);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    /* Contact form */
+    .contact-form {
+      display:flex;
+      flex-direction:column;
+      gap:.6rem;
+      max-width: 480px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: .6rem .75rem;
+      border-radius: 6px;
+      font-size: .95rem;
+    }
+    .contact-form button {
+      margin-top: .35rem;
+      padding: .6rem .9rem;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight:600;
+    }
+    .contact-form button:hover { background: rgba(255,255,255,0.015); }
+
+    footer {
+      margin-top: 1.75rem;
+      padding-top: 1rem;
+      color: var(--muted);
+      font-size: .9rem;
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      align-items:center;
+    }
+
+    /* Responsiveness tweaks */
+    @media (max-width:600px){
+      header { flex-direction: column; align-items:flex-start; gap:.75rem; }
+      .hero h2 { font-size: 1.5rem; }
+      body { padding: 1rem; }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce){
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="container" role="document">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">YN</div>
+        <div>
+          <div class="site-title">Your Name</div>
+          <div style="color:var(--muted); font-size:.85rem;">Designer · Developer · Creator</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main Navigation">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div>
+          <h2 id="hero-heading">Hi — I'm <strong>Your Name</strong>.</h2>
+          <p class="lead">I build elegant, useful things on the web. I care about performance, clarity, and designs that feel effortless. This page is a minimal, high-contrast template — perfect when you want all attention on the content.</p>
+        </div>
+      </section>
+
+      <section id="about" aria-labelledby="about-heading">
+        <h3 id="about-heading">About</h3>
+        <p>I'm a web developer and designer who focuses on front-end engineering, accessibility, and small product teams. I enjoy solving UX problems and turning them into delightful experiences.</p>
+        <p style="color:var(--muted)">Based in [Your City]. Currently open to freelance and collaborative projects.</p>
+      </section>
+
+      <section id="work" aria-labelledby="work-heading">
+        <h3 id="work-heading">Experience</h3>
+        <div class="grid">
+          <div class="card">
+            <strong>Senior Front-end Engineer</strong>
+            <p class="muted" style="color:var(--muted)">Company Name — 2022–Present</p>
+            <p>Built UI components, improved performance, and led accessibility initiatives across the product.</p>
+          </div>
+          <div class="card">
+            <strong>UI/UX Designer</strong>
+            <p class="muted" style="color:var(--muted)">Freelance — 2019–2022</p>
+            <p>Designed websites and apps for startups, focusing on clear information architecture and scalable design systems.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-heading">
+        <h3 id="projects-heading">Selected Projects</h3>
+        <div class="grid">
+          <div class="card">
+            <strong>Project One</strong>
+            <p>Short description of a project: goals, tech used, and the impact (metrics if you have them).</p>
+          </div>
+          <div class="card">
+            <strong>Project Two</strong>
+            <p>Short description of another project. Keep it concise and concrete.</p>
+          </div>
+          <div class="card">
+            <strong>Open Source</strong>
+            <p>Contributed to libraries and tools — link to GitHub or repos here.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Contact</h3>
+        <p style="color:var(--muted)">Want to work together or ask a question? Send a short note — I'll get back to you.</p>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Replace this with your form handling.');" aria-label="Contact form">
+          <label for="name" style="color:var(--muted); font-size:.9rem;">Name</label>
+          <input id="name" type="text" placeholder="Your name" required>
+
+          <label for="email" style="color:var(--muted); font-size:.9rem;">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" required>
+
+          <label for="message" style="color:var(--muted); font-size:.9rem;">Message</label>
+          <textarea id="message" rows="5" placeholder="Brief message..." required></textarea>
+
+          <button type="submit">Send message</button>
+        </form>
+      </section>
+
+      <footer>
+        <div>© <span id="year"></span> Your Name</div>
+        <div style="color:var(--muted)">Built with minimalism — contact@yourdomain.com</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // small niceties
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal links (prefers-reduced-motion respected)
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('a[href^="#"]').forEach(a =>{
+        a.addEventListener('click', (e)=>{
+          const target = document.querySelector(a.getAttribute('href'));
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // update focus for keyboard users
+            setTimeout(()=> target.focus({preventScroll:true}), 400);
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,4 +345,4 @@
         <p>&copy; 2025 My Name</p>
     </footer>
 </body>
-</html>
+</html>-->
