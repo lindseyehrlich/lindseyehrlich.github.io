@@ -38,6 +38,17 @@
       max-width: var(--max-width);
     }
 
+    .no-style-link {
+      color: inherit;           /* use the same text color */
+      text-decoration: none;    /* remove underline */
+      font: inherit;            /* keep the same font and size */
+      font-weight: inherit;     /* preserve bold/normal weight */
+    }
+  
+    .no-style-link:hover {
+      text-decoration: underline; /* optional hover effect */
+    }
+    
     /* Skip link for accessibility */
     .skip-link {
       position: absolute;
@@ -299,7 +310,7 @@
           <div class="card">
             <strong>Research Intern</strong>
             <p class="muted" style="color:var(--muted)">Princeton University Visual AI Lab — July 2023–Aug. 2023</p>
-            <p>Led an independent research project sponsored by </p> <a href="https://www.cs.princeton.edu/~olgarus/" target="_blank">Dr. Olga Russakovsky</a></li><p> on Gender Bias Amplification in Natural Language Processing.</p>
+            <p>Led an independent research project sponsored by </p> <a href="https://www.cs.princeton.edu/~olgarus/" target="_blank" class="no-style-link">Dr. Olga Russakovsky</a></li><p> on Gender Bias Amplification in Natural Language Processing.</p>
           </div>
           <div class="card">
             <strong>Software Development Intern</strong>
