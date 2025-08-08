@@ -124,6 +124,57 @@
       max-width: 65ch;
     }
 
+    /* Profile section */
+    .profile-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .headshot {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .button-group button {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      padding: 8px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease-in-out;
+      text-align: left;
+    }
+    .button-group button:hover {
+      background-color: white;
+      color: black;
+    }
+    @media (max-width: 600px) {
+      .profile-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .button-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .button-group button {
+        min-width: 120px;
+      }
+    }
+
     /* Sections */
     section {
       margin-top: 1.5rem;
@@ -236,12 +287,18 @@
           <p class="lead">Software developer. Aspiring ML Engineer and entrepreneur. Pursuing a B.S. CS at the Georgia Institute of Technology.</p>
         </div>
       </section>
-
-      <section id="links" aria-labelledby="links-heading">
-        <button.onclick="window.open('https://www.linkedin.com/in/lindsey-ehrlich-924258285/', '_blank')">My LinkedIn</button>
-        <button.onclick="window.open('resume.pdf', '_blank')">My Resume</button>
-        <button.onclick="window.open('coverletter.pdf', '_blank')">My Cover Letter</button>
-        <button.onclick="window.open('mailto:lindsey.ehrlich1@gmail.com', '_blank')">Email Me!</button>
+      
+      <section id="profile">
+        <div class="profile-container">
+          <img src="headshot.jpg" alt="Lindsey Ehrlich" class="headshot">
+          <div class="button-group">
+            <button onclick="window.open('https://www.linkedin.com/in/lindsey-ehrlich-924258285/', '_blank')">LinkedIn</button>
+            <button onclick="window.open('resume.pdf', '_blank')">Resume</button>
+            <button onclick="window.open('coverletter.pdf', '_blank')">Cover Letter</button>
+            <button onclick="window.location.href='mailto:lindsey.ehrlich1@gmail.com'">Email Me</button>
+          </div>
+        </div>
+      </section>
 
       <section id="about" aria-labelledby="about-heading">
         <h3 id="about-heading">About</h3>
