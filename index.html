@@ -107,8 +107,75 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.6);
     }
 
+    .profile-hero-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .headshot {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+    flex-shrink: 0;
+  }
+
+  .hero-content {
+    flex: 1;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-content .lead {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Button Row */
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .button-row button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .button-row button:hover {
+    background-color: white;
+    color: black;
+  }
+
+  /* Mobile: stack vertically */
+  @media (max-width: 600px) {
+    .profile-hero-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .button-row {
+      justify-content: center;
+    }
+  }
+
     /* Hero */
-    .hero {
+    /*.hero {
       display: grid;
       gap: 1rem;
       margin-bottom: 1.75rem;
@@ -125,7 +192,7 @@
     }
 
     /* Profile section */
-    .profile-container {
+   /* .profile-container {
       display: flex;
       align-items: center;
       gap: 2rem;
@@ -280,25 +347,25 @@
       </nav>
     </header>
 
-    <main id="main" tabindex="-1">
-      <section class="hero" aria-labelledby="hero-heading">
-        <div>
-          <h2 id="hero-heading">Hi — I'm <strong>Lindsey Ehrlich</strong>.</h2>
+    <section id="profile-hero">
+      <div class="profile-hero-container">
+        <!-- Headshot -->
+        <img src="headshot.jpg" alt="Your Name" class="headshot">
+
+        <!-- Hero Text & Buttons -->
+        <div class="hero-content">
+          <h2>Hi — I'm <strong>Lindsey Ehrlich</strong>.</h2>
           <p class="lead">Software developer. Aspiring ML Engineer and entrepreneur. Pursuing a B.S. CS at the Georgia Institute of Technology.</p>
-        </div>
-      </section>
-      
-      <section id="profile">
-        <div class="profile-container">
-          <img src="headshot.jpg" alt="Lindsey Ehrlich" class="headshot">
-          <div class="button-group">
+
+          <div class="button-row">
             <button onclick="window.open('https://www.linkedin.com/in/lindsey-ehrlich-924258285/', '_blank')">LinkedIn</button>
             <button onclick="window.open('resume.pdf', '_blank')">Resume</button>
             <button onclick="window.open('coverletter.pdf', '_blank')">Cover Letter</button>
             <button onclick="window.location.href='mailto:lindsey.ehrlich1@gmail.com'">Email Me</button>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       <section id="about" aria-labelledby="about-heading">
         <h3 id="about-heading">About</h3>
