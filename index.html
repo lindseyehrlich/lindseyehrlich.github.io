@@ -173,34 +173,53 @@
     color: black;
   }
 
-  /* Skills grid layout */
-  .skills-wrapper {
-    display: flex;
-    justify-content: flex-start; /* aligns entire grid to the left */
+  /* Title centered, grid left-aligned inside the page */
+  .skills-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text);
   }
-    
+
+  /* forces the wrapper to align the grid to the left of its parent */
+  .skills-wrapper {
+    /* If your site has other CSS, keep this inline style (above) to ensure precedence */
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  /* The grid itself — set max-width to control column width, and margin:0 to avoid centering */
   .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+    gap: 1.75rem;
+    max-width: 800px; /* adjust as desired */
+    margin: 0;         /* IMPORTANT: no auto-centering */
   }
 
   .skills-column h4 {
-    margin-bottom: 0.5rem;
-    color: white; /* Matches your white-on-black theme */
+    margin: 0 0 0.5rem 0;
+    color: var(--text);
   }
 
+  /* Keep bullets left aligned within each column */
   .skills-column ul {
     list-style: disc;
-    text-align: left; /* keeps bullet points aligned properly */
-    margin-bottom: 1.5rem;
-    color: var(--muted); /* Slightly muted text for bullets */
+    padding-left: 1.4rem; /* bullet indent */
+    margin: 0 0 1rem 0;
+    color: var(--muted);
+    text-align: left;     /* ensures li text is left-aligned */
   }
 
   .skills-column li {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.35rem;
+  }
+
+  /* Responsive: stack into single column on small screens */
+  @media (max-width: 640px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* Mobile: stack vertically */
@@ -387,7 +406,7 @@
 
     <section id="skills">
         <h3 style="text-align:left;">Technical Skills</h3>
-      <div class="skills-wrapper">
+      <div class="skills-wrapper" style="display:flex; justify-content:flex-start; width:100%;">
         <div class="skills-grid">
           <div class="skills-column">
             <h4>Programming Languages</h4>
